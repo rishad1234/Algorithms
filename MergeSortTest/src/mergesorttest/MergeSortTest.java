@@ -91,27 +91,27 @@ public class MergeSortTest {
     public static void mergeArraylist(int low, int mid, int high){
         ArrayList<Integer> mergedSortedArray = new ArrayList<>();
          
-        int leftIndex = low;
-        int rightIndex = mid + 1;
+        int left = low;
+        int right = mid + 1;
          
-        while(leftIndex <= mid && rightIndex <= high){
-            if(inputArray.get(leftIndex) <= inputArray.get(rightIndex)){
-                mergedSortedArray.add(inputArray.get(leftIndex));
-                leftIndex++;
+        while(left <= mid && right <= high){
+            if(inputArray.get(left) <= inputArray.get(right)){
+                mergedSortedArray.add(inputArray.get(left));
+                left++;
             }else{
-                mergedSortedArray.add(inputArray.get(rightIndex));
-                rightIndex++;
+                mergedSortedArray.add(inputArray.get(right));
+                right++;
             }
         }       
          
-        while(leftIndex <= mid){
-            mergedSortedArray.add(inputArray.get(leftIndex));
-            leftIndex++;
+        while(left <= mid){
+            mergedSortedArray.add(inputArray.get(left));
+            left++;
         }
          
-        while(rightIndex <= mid){
-            mergedSortedArray.add(inputArray.get(rightIndex));
-            rightIndex++;
+        while(right <= mid){
+            mergedSortedArray.add(inputArray.get(right));
+            right++;
         }
          
         int i = 0;
