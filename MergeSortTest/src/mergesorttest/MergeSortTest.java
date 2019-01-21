@@ -90,7 +90,7 @@ public class MergeSortTest {
     
     public static void mergeArraylist(int low, int mid, int high){
         ArrayList<Integer> mergedSortedArray = new ArrayList<>();
-         
+        
         int left = low;
         int right = mid + 1;
          

@@ -24,3 +24,6 @@ hs_err_pid*
 /QuickSortTest/nbproject/private/
 /QuickSortTest/build/
 /QuickSortTest/dist/
+/HeapSortTest/nbproject/private/
+/HeapSortTest/build/
+/HeapSortTest/dist/

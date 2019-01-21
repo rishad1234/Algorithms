@@ -18,11 +18,9 @@ public class QuickSortTest {
         
         quickSortArrayList(0, listSize - 1);
         System.out.println("sorted array: ");
-        for(Integer number : inputArray){
+        inputArray.forEach((number) -> {
             System.out.println(number);
-        }
-        
-//        int[] numbers = new int[listSize];
+        });//        int[] numbers = new int[listSize];
 //        
 //        for(int i = 0; i < listSize; i++){
 //            numbers[i] = input.nextInt();
