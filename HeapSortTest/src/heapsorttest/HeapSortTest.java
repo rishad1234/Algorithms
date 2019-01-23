@@ -9,7 +9,7 @@ public class HeapSortTest {
             heapArray[i] = (int) (Math.random() * 1000);
         }
         
-        heapSortDesc(heapArray);
+        heapSortAsc(heapArray);
         
         for(int i = 0; i < 5; i++){
             System.out.println(heapArray[i]);
