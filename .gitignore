@@ -30,3 +30,7 @@ hs_err_pid*
 /HeapSortExample/nbproject/private/
 /HeapSortExample/dist/
 /HeapSortExample/build/
+/DFS/nbproject/private/
+/Topological_sort/nbproject/private/
+/Topological_sort/dist/
+/Topological_sort/build/
