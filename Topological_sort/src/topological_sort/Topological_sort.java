@@ -29,8 +29,12 @@ public class Topological_sort {
             
             vertices.get(src - 1).addAdjacentVertex(vertices.get(des - 1));
         }
-        
-        dfs(vertices.get(0));
+        for(int i = 0; i <vertices.size(); i++){
+            if(!vertices.get(i).isVisited()){
+                dfs(vertices.get(1));
+            }
+        }
+ 
         System.out.println("top sort: ");
         
         while(!stack.isEmpty()){
@@ -46,5 +50,6 @@ public class Topological_sort {
             }
         }
         stack.push(root);
+        root.setVisited(true);
     }   
 }
