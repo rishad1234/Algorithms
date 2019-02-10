@@ -11,6 +11,8 @@ public class KruskalTest {
 
     public static List<Vertex> vertices = new ArrayList<>();
     public static List<Edge> edges = new ArrayList<>();
+    public static int cost = 0;
+    
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the number of vertices: ");
@@ -40,7 +42,7 @@ public class KruskalTest {
             
         });
         
-        System.out.println("sorted edges: ");
+//        System.out.println("sorted edges: ");
         
 //        for(int i = 0; i < edges.size(); i++){
 //            System.out.println(edges.get(i).getStartVertex() +
@@ -48,7 +50,25 @@ public class KruskalTest {
 //                    " " + edges.get(i).getWeight());
 //        }
 
-        
+        for(int i = 0; i < numberOfEdges; i++){
+            int u = findParent(edges.get(i).getStartVertex());
+            int v = findParent(edges.get(i).getEndVertex());
+            
+            if(u != v){
+                vertices.get(v - 1).setParent(u);
+                cost += edges.get(i).getWeight();
+                System.out.println(edges.get(i).getStartVertex() + " " +
+                                    edges.get(i).getEndVertex() + " " + 
+                                    edges.get(i).getWeight());
+            }
+        }
     }
+    public static int findParent(Vertex v){
+        if(v.getParent() == v.getVertexName()){
+            return v.getParent();
+        }else{
+            return findParent(vertices.get(v.getParent() - 1));
+        }
+    } 
     
 }
