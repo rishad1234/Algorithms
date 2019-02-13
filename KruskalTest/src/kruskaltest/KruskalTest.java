@@ -50,6 +50,7 @@ public class KruskalTest {
 //                    " " + edges.get(i).getWeight());
 //        }
 
+        System.out.println("shortest path: ");
         for(int i = 0; i < numberOfEdges; i++){
             int u = findParent(edges.get(i).getStartVertex());
             int v = findParent(edges.get(i).getEndVertex());
@@ -62,6 +63,8 @@ public class KruskalTest {
                                     edges.get(i).getWeight());
             }
         }
+        
+        System.out.println("Cost: " + cost);
     }
     public static int findParent(Vertex v){
         if(v.getParent() == v.getVertexName()){
