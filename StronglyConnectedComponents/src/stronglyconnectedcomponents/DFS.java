@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class DFS {
     
-    private Stack<Vertex> stack = new Stack<Vertex>();
+    private Stack<Vertex> stack = new Stack<>();
     
     public void dfs(Vertex root){
         for(Vertex v : root.getAdjacent()){
@@ -28,7 +28,7 @@ public class DFS {
         root.setVisited(true);
     }
     
-    public Stack getSortedList(){
+    public Stack getStack(){
         return this.stack;
     }
 }

@@ -1,5 +1,5 @@
 
-package kruskaltest;
+package stronglyconnectedcomponents;
 
 public class Edge {
     private Vertex startVertex;
