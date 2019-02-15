@@ -8,15 +8,6 @@ public class Vertex {
     private int vertexName;
     private List<Vertex> adjacent;
     private boolean visited;
-    private int mark = 0;
-
-    public int getMark() {
-        return mark;
-    }
-
-    public void setMark(int mark) {
-        this.mark = mark;
-    }
 
     public Vertex(int vertexName, boolean visited) {
         this.vertexName = vertexName;

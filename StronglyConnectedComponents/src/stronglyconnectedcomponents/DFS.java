@@ -8,24 +8,25 @@ public class DFS {
     private Stack<Vertex> stack = new Stack<>();
     
     public void dfs(Vertex root){
+        root.setVisited(true);
         for(Vertex v : root.getAdjacent()){
             if(!v.isVisited()){
                 v.setVisited(true);
+                System.out.println("dfs: " + v.getVertexName());
                 dfs(v);
             }
         }
-        root.setVisited(true);
     }
     
     public void topSort(Vertex root){
+        root.setVisited(true);
         for(Vertex v : root.getAdjacent()){
             if(!v.isVisited()){
                 v.setVisited(true);
-                dfs(v);
+                topSort(v);
             }
         }
         stack.push(root);
-        root.setVisited(true);
     }
     
     public Stack getStack(){

@@ -17,13 +17,11 @@ public class StronglyConnectedComponents {
         
         List<Vertex> vertices = new ArrayList<>();
         List<Vertex> reversed = new ArrayList<>();
-        //List<Edge> edges = new ArrayList<>();
         for(int i = 0; i < numberOfVertex; i++){
             vertices.add(new Vertex(i + 1, false));
-        }
-        for(int i = 0; i < numberOfVertex; i++){
             reversed.add(new Vertex(i + 1, false));
         }
+        //reversed.addAll(vertices);
         
         System.out.println("Enter the number of edges: ");
         int numberOfEdges = input.nextInt();
@@ -31,12 +29,9 @@ public class StronglyConnectedComponents {
         for(int i = 0; i < numberOfEdges; i++){
             int startVertex = input.nextInt();
             int endVertex = input.nextInt();
-            //weight is set to 1
-            //edges.add(new Edge(vertices.get(startVertex - 1), vertices.get(endVertex - 1), 1));
-            
             vertices.get(startVertex - 1).addAdjacentVertex(vertices.get(endVertex - 1));
+            reversed.get(endVertex - 1).addAdjacentVertex(reversed.get(startVertex - 1));
         }
-        
         
         DFS dfs = new DFS();
         for(Vertex v : vertices){
@@ -44,59 +39,42 @@ public class StronglyConnectedComponents {
                 dfs.topSort(v);
             }
         }
+//        Stack stack = dfs.getStack();
+//        
+//        System.out.println("Stack: ");
+//        while(!stack.isEmpty()){
+//            Vertex v = (Vertex)stack.pop();
+//            System.out.println(v.getVertexName());
+//        }
         
-        //List<Vertex> reversed = reverseEdges(vertices, numberOfVertex);
-        
-        
-        System.out.println("tesing: ");
-        
-        for(Vertex v : vertices){
-            System.out.println("adjacent of " + v.getVertexName());
-            for(Vertex temp : v.getAdjacent()){
-                System.out.print(" " + temp.getVertexName() + " ");
-            }
-            System.out.println("");
-        }
-        
-//        System.out.println("testing: ");
-//        for(Vertex v : reversed){
-//            System.out.println("adjacent of " + v.getVertexName());
-//            for(Vertex temp : v.getAdjacent()){
-//                System.out.print(" " + temp.getVertexName() + " ");
+//        System.out.println("vertices: ");
+//        for(int i = 0; i < vertices.size(); i++){
+//            System.out.println("Vetex name: " + vertices.get(i).getVertexName());
+//            for(Vertex v : vertices.get(i).getAdjacent()){
+//                System.out.print(v.getVertexName() + " ");
 //            }
 //            System.out.println("");
 //        }
-        
-        
-        
+//        
+//        System.out.println("reversed: ");
+//        for(int i = 0; i < reversed.size(); i++){
+//            System.out.println("Vetex name: " + reversed.get(i).getVertexName());
+//            for(Vertex v : reversed.get(i).getAdjacent()){
+//                System.out.print(v.getVertexName() + " ");
+//            }
+//            System.out.println("");
+//        }   
         
         Stack<Vertex> stack = dfs.getStack();
         while(!stack.isEmpty()){
             Vertex v = stack.pop();
+            System.out.println(v.getVertexName());
             if(!reversed.get(v.getVertexName() - 1).isVisited()){
-                //reversed.get(v.getVertexName() - 1).setMark(reversed.get(v.getVertexName() - 1).getMark() + 1);
-                mark = mark + 1;
+                mark++;
+                System.out.println("vertex: "+ reversed.get(v.getVertexName() - 1).getVertexName());
                 dfs.dfs(reversed.get(v.getVertexName() - 1));
             }
         }
         System.out.println("mark: " + mark);
-        for(int i = 0; i < reversed.size(); i++){
-            System.out.println("vertex name: " + reversed.get(i).getVertexName() + " mark: " + reversed.get(i).getMark());
-        }
-        
     }
-    
-    public static List<Vertex> reverseEdges(List<Vertex> vertices, int numberOfVertex){
-        List<Vertex> reversed = new ArrayList<>();
-        for(int i = 0; i < numberOfVertex; i++){
-            reversed.add(new Vertex(i+1, false));
-        }
-        for(int i = 0; i < vertices.size(); i++){
-            for(Vertex v : vertices.get(i).getAdjacent()){
-                reversed.get(v.getVertexName() - 1).addAdjacentVertex(reversed.get(i));
-            }
-        }
-        return reversed;
-    }
-    
 }
