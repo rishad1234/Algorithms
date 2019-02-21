@@ -19,7 +19,7 @@ public class PrimsTest {
         int numberOfVertices = input.nextInt();
         
         for(int i = 0; i < numberOfVertices; i++){
-            vertices.add(new Vertex(i + 1, false, Integer.MAX_VALUE, 0));
+            vertices.add(new Vertex(i + 1, 0));
         }
         
         System.out.println("Enter the number of edges: ");
@@ -30,8 +30,27 @@ public class PrimsTest {
             int endVertex = input.nextInt();
             int weight = input.nextInt();
             
+            Vertex v = vertices.get(startVertex - 1);
             vertices.get(startVertex - 1).addEdge(new Edge(vertices.get(startVertex - 1), vertices.get(endVertex - 1), weight));
+            vertices.get(endVertex - 1).addEdge(new Edge(vertices.get(endVertex - 1), vertices.get(startVertex - 1), weight));
         }
+//        Vertex v1 = new Vertex(1, false, Integer.MAX_VALUE, 0);
+//        Vertex v2 = new Vertex(2, false, Integer.MAX_VALUE, 0);
+//        Vertex v3 = new Vertex(3, false, Integer.MAX_VALUE, 0);
+//        
+//        vertices.add(v1);
+//        vertices.add(v2);
+//        vertices.add(v3);
+//        
+//        v1.addEdge(new Edge(v1, v2, 1));
+//        v2.addEdge(new Edge(v1, v3, 1));
+//        v3.addEdge(new Edge(v2, v3, 10));
+//        
+//        v1.addEdge(new Edge(v2, v1, 1));
+//        v2.addEdge(new Edge(v3, v1, 1));
+//        v3.addEdge(new Edge(v3, v2, 10));
+        
+        
         prims(vertices.get(0));
         showMst();
     }
@@ -50,7 +69,9 @@ public class PrimsTest {
             
             edges.add(minEdge);
             cost += minEdge.getWeight();
-            vertices.remove(minEdge.getEndVertex());
+            v = minEdge.getEndVertex();
+            v.setCost(minEdge.getWeight());
+            vertices.remove(v);
         }
     }
     
@@ -58,7 +79,10 @@ public class PrimsTest {
         System.out.println("cost of mst: " + cost);
         for(Edge e : edges){
             System.out.println(e.getStartVertex() + " " + e.getEndVertex() + " " + e.getWeight());
+            System.out.println("startVertex " + e.getStartVertex().getCost() + " Endvertex " + e.getEndVertex().getCost());
         }
+        
+        
     }
     
 }
