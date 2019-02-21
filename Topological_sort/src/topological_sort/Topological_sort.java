@@ -31,7 +31,7 @@ public class Topological_sort {
         }
         for(int i = 0; i <vertices.size(); i++){
             if(!vertices.get(i).isVisited()){
-                dfs(vertices.get(1));
+                dfs(vertices.get(i));
             }
         }
  
@@ -43,6 +43,7 @@ public class Topological_sort {
     }
     
     public static void dfs(Vertex root){ 
+        root.setVisited(true);
         for(Vertex v : root.getAdjacent()){
             if(!v.isVisited()){
                 v.setVisited(true);
@@ -50,6 +51,5 @@ public class Topological_sort {
             }
         }
         stack.push(root);
-        root.setVisited(true);
     }   
 }

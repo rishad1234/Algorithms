@@ -37,6 +37,6 @@ hs_err_pid*
 /KruskalTest/nbproject/private/
 /KruskalTest/dist/
 /KruskalTest/build/
-/PrimsTest/nbproject/private/
-/PrimsTest/build/
-/PrimsTest/dist/
+/StronglyConnectedComponents/nbproject/private/
+/StronglyConnectedComponents/dist/
+/StronglyConnectedComponents/build/
