@@ -40,3 +40,5 @@ hs_err_pid*
 /StronglyConnectedComponents/nbproject/private/
 /StronglyConnectedComponents/dist/
 /StronglyConnectedComponents/build/
+/LazyPrimsTest/dist/
+/LazyPrimsTest/build/
