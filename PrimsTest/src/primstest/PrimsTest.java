@@ -80,9 +80,6 @@ public class PrimsTest {
         for(Edge e : edges){
             System.out.println(e.getStartVertex() + " " + e.getEndVertex() + " " + e.getWeight());
             System.out.println("startVertex " + e.getStartVertex().getCost() + " Endvertex " + e.getEndVertex().getCost());
-        }
-        
-        
+        } 
     }
-    
 }
