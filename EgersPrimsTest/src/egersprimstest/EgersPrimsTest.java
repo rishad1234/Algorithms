@@ -30,7 +30,6 @@ public class EgersPrimsTest {
             int end = input.nextInt();
             int weight = input.nextInt();
             
-            //edges.add(new Edge(vertices.get(start - 1), vertices.get(end - 1), weight));
             vertices.get(start - 1).addAdjaent(new Edge(vertices.get(start - 1), vertices.get(end - 1), weight));
             vertices.get(end - 1).addAdjaent(new Edge(vertices.get(end - 1), vertices.get(start - 1), weight));
         }
