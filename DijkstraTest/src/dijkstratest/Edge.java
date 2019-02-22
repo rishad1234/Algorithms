@@ -2,11 +2,11 @@
 package dijkstratest;
 
 public class Edge {
-    private int weight;
     private Vertex startVertex;
     private Vertex endVertex;
+    private int weight;
 
-    public Edge(int weight, Vertex startVertex, Vertex endVertex) {
+    public Edge(Vertex startVertex, Vertex endVertex, int weight) {
         this.weight = weight;
         this.startVertex = startVertex;
         this.endVertex = endVertex;
