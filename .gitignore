@@ -45,3 +45,6 @@ hs_err_pid*
 /EgersPrimsTest/nbproject/private/
 /EgersPrimsTest/dist/
 /EgersPrimsTest/build/
+/DijkstraTest/nbproject/private/
+/DijkstraTest/build/
+/DijkstraTest/dist/
