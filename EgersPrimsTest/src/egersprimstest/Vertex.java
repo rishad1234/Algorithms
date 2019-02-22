@@ -3,12 +3,13 @@ package egersprimstest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class Vertex implements Comparable<Vertex>{
     private int vertexName;
     private int parent;
     private int key;
-    private List<Edge> adjacentices;
+    private PriorityQueue<Edge> adjacentices;
     private boolean visited;
 
     public boolean isVisited() {
@@ -23,7 +24,7 @@ public class Vertex implements Comparable<Vertex>{
         this.vertexName = vertexName;
         this.parent = parent;
         this.key = key;
-        adjacentices = new ArrayList<>();
+        adjacentices = new PriorityQueue<>();
     }
 
     public int getVertexName() {
@@ -50,11 +51,11 @@ public class Vertex implements Comparable<Vertex>{
         this.key = key;
     }
 
-    public List<Edge> getAdjacentices() {
+    public PriorityQueue<Edge> getAdjacentices() {
         return adjacentices;
     }
 
-    public void setAdjacentices(List<Edge> adjacentices) {
+    public void setAdjacentices(PriorityQueue<Edge> adjacentices) {
         this.adjacentices = adjacentices;
     }
     

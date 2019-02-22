@@ -43,7 +43,6 @@ public class EgersPrimsTest {
         
         for(Vertex v : vertices){
             queue.add(v);
-            //System.out.println(v.getVertexName());
         }
         
 //        while(!queue.isEmpty()){

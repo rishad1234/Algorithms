@@ -1,6 +1,6 @@
 
 package egersprimstest;
-public class Edge {
+public class Edge implements Comparable<Edge>{
     private Vertex startVertex;
     private Vertex endVertex;
     private int weight;
@@ -33,6 +33,11 @@ public class Edge {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    @Override
+    public int compareTo(Edge o) {
+        return this.getWeight() - o.getWeight();
     }
     
     
