@@ -42,3 +42,6 @@ hs_err_pid*
 /StronglyConnectedComponents/build/
 /LazyPrimsTest/dist/
 /LazyPrimsTest/build/
+/EgersPrimsTest/nbproject/private/
+/EgersPrimsTest/dist/
+/EgersPrimsTest/build/
