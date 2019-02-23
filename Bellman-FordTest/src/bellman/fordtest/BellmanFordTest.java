@@ -56,9 +56,7 @@ public class BellmanFordTest {
     
     public static void bellmanFord(Vertex source){
         source.setDistance(0);
-        
         for(int i = 0; i < vertices.size() - 1; i++){
-            
             for(Edge e : edges){
                 Vertex u = e.getStartVertex();
                 Vertex v = e.getEndVertex();
@@ -98,6 +96,4 @@ public class BellmanFordTest {
 
         Collections.reverse(shortestPath);
     }
-    
-    
 }
