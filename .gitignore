@@ -48,3 +48,6 @@ hs_err_pid*
 /DijkstraTest/nbproject/private/
 /DijkstraTest/build/
 /DijkstraTest/dist/
+/Bellman-FordTest/nbproject/private/
+/Bellman-FordTest/dist/
+/Bellman-FordTest/build/
