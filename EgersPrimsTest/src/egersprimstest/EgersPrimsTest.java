@@ -34,31 +34,30 @@ public class EgersPrimsTest {
         }
         
         //main algorithm
-        for(Vertex vertex: vertices){
-            if(!vertex.isVisited()){
-                vertex.setKey(0);
-                queue.add(vertex);
-                
-                while(!queue.isEmpty()){
-                    Vertex v = queue.remove();
-                    v.setVisited(true);
-                    
-                    for(Edge e : v.getAdjacentices()){
-                        Vertex w = e.getEndVertex();
-                        if(w.isVisited()){
-                            continue;
+        Vertex vertex = vertices.get(0);
+        if(!vertex.isVisited()){
+            vertex.setKey(0);
+            queue.add(vertex);
+
+            while(!queue.isEmpty()){
+                Vertex v = queue.remove();
+                v.setVisited(true);
+
+                for(Edge e : v.getAdjacentices()){
+                    Vertex w = e.getEndVertex();
+                    if(w.isVisited()){
+                        continue;
+                    }
+                    if(e.getWeight() < w.getKey()){
+                        w.setParent(v.getVertexName());
+                        w.setKey(e.getWeight());
+                        w.setMinEdge(e);
+
+                        if(queue.contains(w)){
+                            queue.remove(w);
                         }
-                        if(e.getWeight() < w.getKey()){
-                            w.setParent(v.getVertexName());
-                            w.setKey(e.getWeight());
-                            w.setMinEdge(e);
-                            
-                            if(queue.contains(w)){
-                                queue.remove(w);
-                            }
-                            
-                            queue.add(w);
-                        }
+
+                        queue.add(w);
                     }
                 }
             }
