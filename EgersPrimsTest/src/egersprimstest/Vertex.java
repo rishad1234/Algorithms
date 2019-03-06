@@ -11,9 +11,18 @@ public class Vertex implements Comparable<Vertex>{
     private int key;
     private PriorityQueue<Edge> adjacentices;
     private boolean visited;
+    private Edge minEdge;
 
     public boolean isVisited() {
         return visited;
+    }
+
+    public Edge getMinEdge() {
+        return minEdge;
+    }
+
+    public void setMinEdge(Edge minEdge) {
+        this.minEdge = minEdge;
     }
 
     public void setVisited(boolean visited) {

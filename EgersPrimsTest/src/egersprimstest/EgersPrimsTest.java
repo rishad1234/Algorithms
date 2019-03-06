@@ -10,8 +10,7 @@ public class EgersPrimsTest {
 
     private static PriorityQueue<Vertex> queue = new PriorityQueue();
     private static List<Vertex> vertices = new ArrayList<>();
-    private static List<Edge> edges = new ArrayList<>();
-    private static int cost = 0;
+    
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
@@ -34,43 +33,43 @@ public class EgersPrimsTest {
             vertices.get(end - 1).addAdjaent(new Edge(vertices.get(end - 1), vertices.get(start - 1), weight));
         }
         
-        System.out.println("Enter the source vertex: ");
-        int sourceVertex = input.nextInt();
-        
-        //main algorithm
-        vertices.get(sourceVertex - 1).setKey(0);
-        
-        for(Vertex v : vertices){
-            queue.add(v);
-        }
-        
-//        while(!queue.isEmpty()){
-//            System.out.println(queue.remove().getVertexName());
-//        }
-        
-        while(!queue.isEmpty()){
-            Vertex temp = queue.remove();
-            
-            for(Edge e : temp.getAdjacentices()){
-                if(queue.contains(e.getEndVertex()) && (e.getWeight() < e.getEndVertex().getKey())){
-                    e.getEndVertex().setParent(temp.getVertexName());
-                    e.getEndVertex().setKey(e.getWeight());
-                    edges.add(e);
-                    cost += e.getWeight();
+        for(Vertex vertex: vertices){
+            if(!vertex.isVisited()){
+                vertex.setKey(0);
+                queue.add(vertex);
+                
+                while(!queue.isEmpty()){
+                    Vertex v = queue.remove();
+                    v.setVisited(true);
+                    
+                    for(Edge e : v.getAdjacentices()){
+                        Vertex w = e.getEndVertex();
+                        if(w.isVisited()){
+                            continue;
+                        }
+                        if(e.getWeight() < w.getKey()){
+                            w.setParent(v.getVertexName());
+                            w.setKey(e.getWeight());
+                            w.setMinEdge(e);
+                            
+                            if(queue.contains(w)){
+                                queue.remove(w);
+                            }
+                            
+                            queue.add(w);
+                        }
+                    }
                 }
             }
         }
         
-        System.out.println("cost: " + cost);
-        for(Edge e: edges){
-            System.out.println(e.getStartVertex().getVertexName() 
-                    + " " + e.getEndVertex().getVertexName() 
-                    + " " + e.getWeight() 
-                    + " " + e.getStartVertex().getParent() 
-                    + " " + e.getEndVertex().getParent());
-            System.out.println("StartVertex " + e.getStartVertex().getKey() + " endVertex " + e.getEndVertex().getKey());
+        for(Vertex v :  vertices){
+            if(v.getMinEdge() != null){
+                Edge e = v.getMinEdge();
+                System.out.println(e.getStartVertex().getVertexName() + " "
+                                    + e.getEndVertex().getVertexName() + " "
+                                    + e.getWeight());
+            }
         }
-        
     }
-    
 }
