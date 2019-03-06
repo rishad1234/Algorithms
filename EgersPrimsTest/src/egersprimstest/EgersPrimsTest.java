@@ -33,6 +33,7 @@ public class EgersPrimsTest {
             vertices.get(end - 1).addAdjaent(new Edge(vertices.get(end - 1), vertices.get(start - 1), weight));
         }
         
+        //main algorithm
         for(Vertex vertex: vertices){
             if(!vertex.isVisited()){
                 vertex.setKey(0);
