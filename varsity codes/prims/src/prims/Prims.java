@@ -47,7 +47,9 @@ public class Prims {
             v.visited = true;
             for(Edge e : adjacents[v.vertexName]){
                 Vertex temp = vertices.get(e.end - 1);
-
+                if(temp.visited == true){
+                    continue;
+                }
                 if(e.weight < temp.key){
                     temp.parent = v.vertexName;
                     temp.key = e.weight;
