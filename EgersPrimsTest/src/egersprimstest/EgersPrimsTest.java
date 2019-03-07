@@ -32,9 +32,10 @@ public class EgersPrimsTest {
             vertices.get(start - 1).addAdjaent(new Edge(vertices.get(start - 1), vertices.get(end - 1), weight));
             vertices.get(end - 1).addAdjaent(new Edge(vertices.get(end - 1), vertices.get(start - 1), weight));
         }
-        
+        System.out.println("Enter the source vertex: ");
+        int source = input.nextInt();
         //main algorithm
-        Vertex vertex = vertices.get(0);
+        Vertex vertex = vertices.get(source - 1);
         if(!vertex.isVisited()){
             vertex.setKey(0);
             queue.add(vertex);
@@ -63,6 +64,7 @@ public class EgersPrimsTest {
             }
         }
         
+        System.out.println("Mst: ");
         for(Vertex v :  vertices){
             if(v.getMinEdge() != null){
                 Edge e = v.getMinEdge();
