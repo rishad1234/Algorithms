@@ -6,7 +6,6 @@ public class HeapSort {
     static int[] numbers = {5, 2, 1, 2, 4, 4};
     //static int[] numbers = new int[5];
     public static void main(String[] args) {
-        //int[] numbers = {5, 2, 1, 2, 4, 4};
         heapSort(numbers);
         for(int i : numbers){
             System.out.println(i);
