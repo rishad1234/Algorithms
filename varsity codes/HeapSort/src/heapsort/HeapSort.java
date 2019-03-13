@@ -9,7 +9,7 @@ public class HeapSort {
         heapSort(numbers);
         for(int i : numbers){
             System.out.println(i);
-        }
+        }  
     }
     
     public static int leftChild(int i){
@@ -57,5 +57,5 @@ public class HeapSort {
             swap(ar, i, 0);
             maxHeapify(ar, i, 0);
         }
-    } 
+    }
 }
