@@ -40,15 +40,21 @@ public class BellmanFord {
         for(int i = 0; i < vertices.size() - 1; i++){
             
             Vertex vertex = vertices.get(0);
-            vertex.key = 0;
-            queue.add(vertex);
+            if(vertex.visited == false){
+                vertex.key = 0;
+                queue.add(vertex);
+            }
             System.out.println("dhukse1");
 
             while(!queue.isEmpty()){
                 System.out.println("dhukse2");
                 Vertex v = queue.remove();
+                v.visited = true;
                 for(Edge e : adjacents[v.vertexName]){
                     Vertex temp = vertices.get(e.end - 1);
+                    if(temp.visited == true){
+                        continue;
+                    }
                     int distance = v.key + e.weight;
                     if(distance < temp.key){
                         temp.key = distance;
@@ -58,6 +64,10 @@ public class BellmanFord {
                         queue.add(temp);
                     }
                 }
+            }
+            
+            for(Vertex v : vertices){
+                v.visited = false;
             }
         }
 //        System.out.println("all the minimum edges: ");
@@ -85,7 +95,11 @@ public class BellmanFord {
                         continue;
                     }
                     int distance = v.key + e.weight;
-                    if(distance > temp.key){
+                    if(distance < temp.key){
+                        System.out.println("negative cycle detected");
+                        System.out.println("there is no shortest path");    
+                        break;
+                    }else{
                         temp.parent = v.vertexName;
                         temp.key = distance;
                         temp.minEdge = e;
@@ -94,10 +108,6 @@ public class BellmanFord {
                             queue.remove(temp);
                         }
                         queue.add(temp);
-                        System.out.println("negative cycle detected");
-                        System.out.println("there is no shortest path");
-                                
-                        break;
                     }
                 }
             }
