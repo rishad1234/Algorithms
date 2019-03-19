@@ -37,28 +37,21 @@ public class BellmanFord {
             adjacents[end].add(e1);
         }
         
-        for(int i = 0; i < vertices.size(); i++){
+        for(int i = 0; i < vertices.size() - 1; i++){
             
             Vertex vertex = vertices.get(0);
-            if(vertex.visited == false){
-                vertex.key = 0;
-                queue.add(vertex);
-            }
+            vertex.key = 0;
+            queue.add(vertex);
+            System.out.println("dhukse1");
 
             while(!queue.isEmpty()){
+                System.out.println("dhukse2");
                 Vertex v = queue.remove();
-                v.visited = true;
                 for(Edge e : adjacents[v.vertexName]){
                     Vertex temp = vertices.get(e.end - 1);
-                    if(temp.visited == true){
-                        continue;
-                    }
                     int distance = v.key + e.weight;
                     if(distance < temp.key){
-                        temp.parent = v.vertexName;
                         temp.key = distance;
-                        //temp.minEdge = e;
-
                         if(queue.contains(temp)){
                             queue.remove(temp);
                         }
@@ -67,6 +60,15 @@ public class BellmanFord {
                 }
             }
         }
+//        System.out.println("all the minimum edges: ");
+//        for(Vertex temp : vertices){
+//            temp.visited = false;
+//            if(temp.minEdge != null){
+//                System.out.println(temp.minEdge.start + " " +
+//                    temp.minEdge.end + " " + 
+//                    temp.minEdge.weight);
+//            }
+//        }
         
         Vertex vertex = vertices.get(0);
             if(vertex.visited == false){
@@ -83,16 +85,17 @@ public class BellmanFord {
                         continue;
                     }
                     int distance = v.key + e.weight;
-                    if(distance < temp.key){
+                    if(distance > temp.key){
                         temp.parent = v.vertexName;
                         temp.key = distance;
-                        //temp.minEdge = e;
+                        temp.minEdge = e;
 
                         if(queue.contains(temp)){
                             queue.remove(temp);
                         }
                         queue.add(temp);
                         System.out.println("negative cycle detected");
+                        System.out.println("there is no shortest path");
                                 
                         break;
                     }
