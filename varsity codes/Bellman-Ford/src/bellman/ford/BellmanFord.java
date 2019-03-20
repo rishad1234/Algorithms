@@ -4,20 +4,15 @@ package bellman.ford;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class BellmanFord {
-    static List<Edge>[] adjacents = (List<Edge>[]) new List[1000];
-    static List<Vertex> vertices = new ArrayList<>();
-    static PriorityQueue<Vertex> queue = new PriorityQueue<>();
-    static List<Vertex> shortestPath = new ArrayList<>();
+    private static List<Vertex> vertices = new ArrayList<>();
+    private static List<Edge> edges = new ArrayList<>();
+    private static List<Vertex> shortestPath = new ArrayList<>();
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
-        for(int i = 0; i < 100; i++){
-            adjacents[i] = new ArrayList<>();
-        }
         System.out.println("Enter the number of vertices:");
         int numberOfVertices = input.nextInt();
         for(int i = 0; i < numberOfVertices; i++){
@@ -32,85 +27,39 @@ public class BellmanFord {
             int end = input.nextInt();
             int weight = input.nextInt();
             Edge e = new Edge(start, end, weight);
-            Edge e1 = new Edge(end, start, weight);
-            adjacents[start].add(e);
-            adjacents[end].add(e1);
-        }
+            edges.add(e);
+        } 
         
+        vertices.get(0).key = 0;
         for(int i = 0; i < vertices.size() - 1; i++){
-            
-            Vertex vertex = vertices.get(0);
-            if(vertex.visited == false){
-                vertex.key = 0;
-                queue.add(vertex);
-            }
-            System.out.println("dhukse1");
-
-            while(!queue.isEmpty()){
-                System.out.println("dhukse2");
-                Vertex v = queue.remove();
-                v.visited = true;
-                for(Edge e : adjacents[v.vertexName]){
-                    Vertex temp = vertices.get(e.end - 1);
-                    if(temp.visited == true){
-                        continue;
-                    }
-                    int distance = v.key + e.weight;
-                    if(distance < temp.key){
-                        temp.key = distance;
-                        if(queue.contains(temp)){
-                            queue.remove(temp);
-                        }
-                        queue.add(temp);
-                    }
+            for(Edge e : edges){
+                Vertex u = vertices.get(e.start - 1);
+                Vertex v = vertices.get(e.end - 1);
+                
+                if(u.key == Integer.MAX_VALUE){
+                    continue;
                 }
-            }
-            
-            for(Vertex v : vertices){
-                v.visited = false;
+                int distance = u.key + e.weight;
+                
+                if(distance < v.key){
+                    v.key = distance;
+                    v.parent = u.vertexName;
+                }
             }
         }
-//        System.out.println("all the minimum edges: ");
-//        for(Vertex temp : vertices){
-//            temp.visited = false;
-//            if(temp.minEdge != null){
-//                System.out.println(temp.minEdge.start + " " +
-//                    temp.minEdge.end + " " + 
-//                    temp.minEdge.weight);
-//            }
-//        }
         
-        Vertex vertex = vertices.get(0);
-            if(vertex.visited == false){
-                vertex.key = 0;
-                queue.add(vertex);
-            }
-
-            while(!queue.isEmpty()){
-                Vertex v = queue.remove();
-                v.visited = true;
-                for(Edge e : adjacents[v.vertexName]){
-                    Vertex temp = vertices.get(e.end - 1);
-                    if(temp.visited == true){
-                        continue;
-                    }
-                    int distance = v.key + e.weight;
-                    if(distance < temp.key){
-                        System.out.println("negative cycle detected");
-                        System.out.println("there is no shortest path");    
-                        break;
-                    }else{
-                        temp.parent = v.vertexName;
-                        temp.key = distance;
-                        temp.minEdge = e;
-
-                        if(queue.contains(temp)){
-                            queue.remove(temp);
-                        }
-                        queue.add(temp);
-                    }
+        for(Edge e : edges){
+            if(vertices.get(e.start - 1).key != Integer.MAX_VALUE){
+                
+                Vertex u = vertices.get(e.start - 1);
+                Vertex v = vertices.get(e.end - 1);
+                int distance = u.key + e.weight;
+                if(distance< v.key){
+                    System.out.println("There is a negative cycle in this graph");
+                    return;
                 }
             }
+        }
     }
     
     public static void shortestPathTo(Vertex target){
@@ -133,7 +82,7 @@ class Edge{
     }
 }
 
-class Vertex implements Comparable<Vertex>{
+class Vertex{
     int vertexName;
     int key = Integer.MAX_VALUE;
     int parent  = -1;
@@ -142,10 +91,5 @@ class Vertex implements Comparable<Vertex>{
 
     public Vertex(int vertexName) {
         this.vertexName = vertexName;
-    }
-
-    @Override
-    public int compareTo(Vertex o) {
-        return this.key - o.key;
     }
 }
