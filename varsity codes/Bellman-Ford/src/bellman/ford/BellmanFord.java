@@ -54,7 +54,7 @@ public class BellmanFord {
                 Vertex u = vertices.get(e.start - 1);
                 Vertex v = vertices.get(e.end - 1);
                 int distance = u.key + e.weight;
-                if(distance< v.key){
+                if(distance < v.key){
                     System.out.println("There is a negative cycle in this graph");
                     return;
                 }
