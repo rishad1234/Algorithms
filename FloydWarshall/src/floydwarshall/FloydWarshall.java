@@ -40,25 +40,14 @@ public class FloydWarshall {
             System.out.println("");
         }
         
-//        for(int k = 1; k <= nodes; k++){
-//            for(int i = 1; i <= nodes; i++){
-//                for(int j = 1; j <= nodes; j++){
-//                    distance[i][j] = Math.min(distance[i][j], (distance[i][k] + distance[k][j]));
-//                }
-//            }
-//        }
-
-int from,to,via;
-        for(from=1;from<=nodes;from++)
-        {
-                for(to=1;to<=nodes;to++)
-                {
-                        for(via=1;via<=nodes;via++)
-                        {
-                                distance[from][to] = Math.min(distance[from][to],
-                                                         distance[from][via]+distance[via][to]);
-                        }
+        for(int k = 1; k <= nodes; k++){
+            for(int i = 1; i <= nodes; i++){
+                for(int j = 1; j <= nodes; j++){
+                    if(distance[i][k] != Integer.MAX_VALUE && distance[k][j] != Integer.MAX_VALUE){
+                        distance[i][j] = Math.min(distance[i][j], (distance[i][k] + distance[k][j]));
+                    }
                 }
+            }
         }
         
         for(int i = 1; i <= nodes; i++){
