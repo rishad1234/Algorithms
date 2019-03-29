@@ -30,7 +30,6 @@ public class ActivitySelectionTest {
             System.out.println(activity);
         }
     }
-    
 }
 /*
 1 1 3

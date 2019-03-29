@@ -4,7 +4,6 @@ package activityselectiontest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.PriorityQueue;
 
 public class ActivitySelection {
     private List<Activity> activities;
@@ -51,5 +50,4 @@ public class ActivitySelection {
     public int numberOfResults(){
         return selectedActivities.size();
     }
-    
 }

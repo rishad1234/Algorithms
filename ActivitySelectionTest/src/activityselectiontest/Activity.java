@@ -45,6 +45,4 @@ public class Activity implements Comparable<Activity>{
     public String toString() {
         return "Activity{" + "activityName=" + activityName + ", startTime=" + startTime + ", finishTime=" + finishTime + '}';
     }
-    
-    
 }
