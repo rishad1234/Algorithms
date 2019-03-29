@@ -4,17 +4,21 @@ package activityselectiontest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class ActivitySelection {
     private List<Activity> activities;
     private List<Activity> selectedActivities;
+    public PriorityQueue<Activity> test;
 
     public ActivitySelection() {
+        this.test = new PriorityQueue<>();
         this.activities = new ArrayList<>();
         this.selectedActivities = new ArrayList<>();
     }
     
     public void addActivity(Activity activity){
+        this.test.add(activity);
         this.activities.add(activity);
     }
 

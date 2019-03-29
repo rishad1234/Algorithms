@@ -29,6 +29,11 @@ public class ActivitySelectionTest {
         for(Activity activity : activitySelection.getSelectedActivity()){
             System.out.println(activity);
         }
+        
+        System.out.println("Priority queue values: ");
+        while(!activitySelection.test.isEmpty()){
+            System.out.println(activitySelection.test.remove());
+        }
     }
 }
 /*
