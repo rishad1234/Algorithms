@@ -62,5 +62,26 @@ public class MatrixChainMultiplication {
             System.out.println("");
         }
         System.out.println("");     
+        
+        System.out.println("the equations: ");
+        printOptimalParenthesizations(bracketsMatrix);
+       
+    }
+    
+    public static void printOptimalParenthesizations(int[][] s) {
+        boolean[] inAResult = new boolean[s.length];
+        printWithParenthesizations(s, 0, s.length - 1, inAResult);
+    }
+
+    public static void printWithParenthesizations(int[][]s, int i, int j,  /* for pretty printing: */ boolean[] inAResult) {
+        if (i != j) {
+            printWithParenthesizations(s, i, s[i][j], inAResult);
+            printWithParenthesizations(s, s[i][j] + 1, j, inAResult);
+            String istr = inAResult[i] ? "_result " : " ";
+            String jstr = inAResult[j] ? "_result " : " ";
+            System.out.println(" A_" + i + istr + "* A_" + j + jstr);
+            inAResult[i] = true;
+            inAResult[j] = true;
+        }
     }
 }
