@@ -61,6 +61,6 @@ public class MatrixChainMultiplication {
             }
             System.out.println("");
         }
-        System.out.println("");      
+        System.out.println("");     
     }
 }
