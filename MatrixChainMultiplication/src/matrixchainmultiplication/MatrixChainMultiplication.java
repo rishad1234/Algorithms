@@ -69,6 +69,7 @@ public class MatrixChainMultiplication {
     }
     
     //straight from wikipedia
+    // in order tree traversal
     public static void printOptimalParenthesizations(int[][] s) {
         boolean[] inAResult = new boolean[s.length];
         printWithParenthesizations(s, 0, s.length - 1, inAResult);
