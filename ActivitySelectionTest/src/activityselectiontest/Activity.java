@@ -45,7 +45,6 @@ public class Activity implements Comparable<Activity>{
         }else{
             return this.getFinishTime() - o.getFinishTime();
         }
-        //return this.getFinishTime() - o.getFinishTime();
     }
 
     @Override
