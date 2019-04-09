@@ -15,7 +15,7 @@ public class ActivitySelection {
         System.out.println("Enter the number of activities: ");
         int numberOfActivities = input.nextInt();
         for(int i = 0; i < numberOfActivities; i++){
-            input.nextInt();
+            //input.nextInt();
             int startTime = input.nextInt();
             int finishTime = input.nextInt();
             
