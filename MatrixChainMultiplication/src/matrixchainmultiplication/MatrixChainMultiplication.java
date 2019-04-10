@@ -65,7 +65,6 @@ public class MatrixChainMultiplication {
         
         System.out.println("the equations: ");
         printOptimalParenthesizations(bracketsMatrix);
-       
     }
     
     //straight from wikipedia
