@@ -10,6 +10,7 @@ public class BellmanFord {
     private static List<Vertex> vertices = new ArrayList<>();
     private static List<Edge> edges = new ArrayList<>();
     private static List<Vertex> shortestPath = new ArrayList<>();
+    static int cost = 0;
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
@@ -44,6 +45,7 @@ public class BellmanFord {
                 if(distance < v.key){
                     v.key = distance;
                     v.parent = u.vertexName;
+                    v.minEdge = e;
                 }
             }
         }
@@ -60,12 +62,15 @@ public class BellmanFord {
                 }
             }
         }
+        shortestPathTo(vertices.get(vertices.size() - 1));
+        System.out.println("Cost is: " + shortestPath.get(shortestPath.size() - 1).key);
     }
     
     public static void shortestPathTo(Vertex target){
         for(Vertex v = target; v.parent != -1; v = vertices.get(v.parent - 1)){
             shortestPath.add(v);
         }
+        shortestPath.add(vertices.get(0));
         Collections.reverse(shortestPath);
     }
 }
@@ -92,4 +97,10 @@ class Vertex{
     public Vertex(int vertexName) {
         this.vertexName = vertexName;
     }
+
+    @Override
+    public String toString() {
+        return "Vertex{" + "vertexName=" + vertexName + ", key=" + key + ", parent=" + parent + ", minEdge=" + minEdge + ", visited=" + visited + '}';
+    }
+    
 }
