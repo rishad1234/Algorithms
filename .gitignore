@@ -99,3 +99,6 @@ hs_err_pid*
 /Nqueen/nbproject/private/
 /Nqueen/build/
 /Nqueen/dist/
+/EditDistance/nbproject/private/
+/EditDistance/build/
+/EditDistance/dist/
