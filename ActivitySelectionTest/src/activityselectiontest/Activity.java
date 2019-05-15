@@ -49,6 +49,6 @@ public class Activity implements Comparable<Activity>{
 
     @Override
     public String toString() {
-        return "Activity{" + "activityNamee=" + activityName + ", startTime=" + startTime + ", finishTime=" + finishTime + '}';
+        return "Activity{" + "activityName=" + activityName + ", startTime=" + startTime + ", finishTime=" + finishTime + '}';
     }
 }
