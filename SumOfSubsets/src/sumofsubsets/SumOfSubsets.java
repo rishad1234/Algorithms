@@ -27,27 +27,29 @@ public class SumOfSubsets {
         System.out.println("Maximum: ");
         int maximum = input.nextInt();
         Arrays.sort(sets);
-        
-        sumOfSub(0, 0, 0, maximum);
-                
-    }   
+        sumOfSub(0, 0, maximum - sets[0], maximum);     
+    }
+    
     public static void sumOfSub(int s, int k, int r, int maximum){
         x[k] = 1;
         if(s + sets[k] == maximum){
-            printSolution();
+            System.out.println("dhukse3");
+            printSolution(k);
         }else if(s + sets[k] + sets[k + 1] <= maximum){
+            System.out.println("dhukse");
             sumOfSub(s + sets[k], k + 1, r - sets[k], maximum);
         }
-        if(s + r - sets[k] >= maximum && s + sets[k + 1] <= maximum){
+        if((s + r - sets[k] >= maximum) && (s + sets[k + 1] <= maximum)){
             x[k] = 0;
+            System.out.println("dhukse 2");
             sumOfSub(s, k + 1, r - sets[k], maximum);
         }
         
     }
     
-    public static void printSolution(){
-        for(int i : x){
-            System.out.print(i);
+    public static void printSolution(int k){
+        for(int i  = 0; i < k; i++){
+            System.out.print(x[i]);
         }
         System.out.println("");
     }
