@@ -105,3 +105,6 @@ hs_err_pid*
 /SumOfSubsets/nbproject/private/
 /SumOfSubsets/build/
 /SumOfSubsets/dist/
+/SumOfSubsetDynamic/nbproject/private/
+/SumOfSubsetDynamic/dist/
+/SumOfSubsetDynamic/build/
