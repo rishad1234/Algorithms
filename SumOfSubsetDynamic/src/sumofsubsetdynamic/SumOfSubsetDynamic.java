@@ -46,7 +46,7 @@ public class SumOfSubsetDynamic {
             
             for(int j = 1; j <= sum; j++){
                 
-                if(j - items[i - 1] >= 0){
+                if(j >= items[i - 1]){
                     table[i][j] = table[i - 1][j] || table[i - 1][j - items[i - 1]];
                 }else{
                     table[i][j] = table[i - 1][j];
