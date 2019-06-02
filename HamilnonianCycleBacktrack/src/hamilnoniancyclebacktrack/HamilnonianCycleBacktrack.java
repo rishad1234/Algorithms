@@ -12,68 +12,82 @@ public class HamilnonianCycleBacktrack {
         System.out.println("Enter the number of vertices: ");
         int vertices = input.nextInt();
         
-        graph = new int[vertices + 1][vertices + 1];
-        x =  new int[vertices + 1];
+        graph = new int[vertices][vertices];
+        x =  new int[vertices];
         
         System.out.println("Enter the number of edges: ");
         int edges = input.nextInt();
         
         System.out.println("Enter the edges one by one: ");
-        for(int i = 0; i < edges; i++){
+        int i = 0;
+        while(i < edges){
             int src = input.nextInt();
             int dest = input.nextInt();
             graph[src][dest] = 1;
             graph[dest][src] = 1;
+            System.out.println("Dhukse " + i);
+            i++;
         }
         
-        hamiltonian(1, vertices);
-        
+        hamCycle(vertices);
     }
     
-    public static int nextValue(int vertex, int vertices){
-        
-        while(true){
-            
-            x[vertex] = (x[vertex] + 1) % (vertices + 1);
-            if(x[vertex] == 0){
-                return 0;
+    public static boolean isSafe(int v, int pos){ 
+      
+        if(graph[x[pos - 1]][v] == 0) {
+            return false;
+        }
+
+        for(int i = 0; i < pos; i++) 
+            if (x[i] == v) {
+                return false;
             }
+
+        return true; 
+    }
+    
+    public static boolean hamCycleUtil(int pos, int vertices){ 
+        
+        if(pos == vertices){  
             
-            if(graph[x[vertex - 1]][x[vertex]] != 0){
+            if(graph[x[pos - 1]][x[0]] == 1){
+                return true;
+            }else{
+                return false;
+            } 
+        } 
+  
+        for(int v = 1; v < vertices; v++){ 
+            
+            if(isSafe(v, pos)){ 
                 
-                for(int j = 1; j <= vertex - 1; j++){
-                    
-                    if(j == vertex){
-                        if((vertex < vertices || vertex == vertices) && graph[x[vertices]][x[1]] != 0){
-                            return vertex;
-                        }
-                    }
-                }
-            }
-        }
-    }
+                x[pos] = v; 
+                if(hamCycleUtil(pos + 1, vertices) == true){
+                    return true;
+                }  
+
+                x[pos] = -1; 
+            } 
+        } 
+        return false; 
+    } 
     
-    public static void hamiltonian(int vertex, int vertices){
-        
-        while(true){
+    public static void hamCycle(int vertices){
+       
+        for(int i = 0; i < vertices; i++){
+            x[i] = -1;
+        } 
+  
+        x[0] = 0; 
+        if(hamCycleUtil(1, vertices) == false){
             
-            int k = nextValue(vertex, vertices);
-            if(k != 0){
-                if(x[k] == 0){
-                    return;
-                }
-                if(k == vertices){
-                    
-                    for(int i = 1; i <= vertices; i++){
-                        System.out.print(x[i] + " ");
-                    }
-                    System.out.println("");
-                    
-                }else{
-                    hamiltonian(k + 1, vertices);
-                }
-            }
+            System.out.println("Solution does not exist"); 
+            return;
+        } 
+  
+        for(int i = 0; i < vertices; i++){
+            System.out.print(x[i] + " ");
         }
-    }
-    
+        System.out.println("");
+    } 
 }
