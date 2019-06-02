@@ -32,13 +32,13 @@ public class HamilnonianCycleBacktrack {
         hamCycle(vertices);
     }
     
-    public static boolean isSafe(int v, int pos){ 
+    public static boolean isSafe(int v, int position){ 
       
-        if(graph[x[pos - 1]][v] == 0) {
+        if(graph[x[position - 1]][v] == 0) {
             return false;
         }
 
-        for(int i = 0; i < pos; i++) 
+        for(int i = 0; i < position; i++) 
             if (x[i] == v) {
                 return false;
             }
@@ -46,11 +46,11 @@ public class HamilnonianCycleBacktrack {
         return true; 
     }
     
-    public static boolean hamCycleUtil(int pos, int vertices){ 
+    public static boolean hamCycleUtil(int position, int vertices){ 
         
-        if(pos == vertices){  
+        if(position == vertices){  
             
-            if(graph[x[pos - 1]][x[0]] == 1){
+            if(graph[x[position - 1]][x[0]] == 1){
                 return true;
             }else{
                 return false;
@@ -59,14 +59,14 @@ public class HamilnonianCycleBacktrack {
   
         for(int v = 1; v < vertices; v++){ 
             
-            if(isSafe(v, pos)){ 
+            if(isSafe(v, position)){ 
                 
-                x[pos] = v; 
-                if(hamCycleUtil(pos + 1, vertices) == true){
+                x[position] = v; 
+                if(hamCycleUtil(position + 1, vertices) == true){
                     return true;
                 }  
 
-                x[pos] = -1; 
+                x[position] = -1; 
             } 
         } 
         return false; 
