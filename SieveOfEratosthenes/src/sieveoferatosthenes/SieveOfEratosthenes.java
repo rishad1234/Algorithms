@@ -13,7 +13,7 @@ public class SieveOfEratosthenes {
         Scanner input = new Scanner(System.in);
         
         System.out.println("Enter the range n: ");
-        int n = input.nextInt();
+        int n = 99999999;//input.nextInt();
         
         sieve(n);
     }
