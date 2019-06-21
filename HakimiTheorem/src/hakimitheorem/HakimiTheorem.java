@@ -35,19 +35,16 @@ public class HakimiTheorem {
         
         //Collections.reverse(list);
         Arrays.sort(list, Collections.reverseOrder());
-        int size = list.length;
-        int temp = 0;
-        while(list.length != 0){
+        
+        while(true){
             int largestDegree = list[0];
-            temp++;
-            size--;
-            if(largestDegree < size + temp){
+            list = Arrays.copyOfRange(list, 1, list.length);
+            if(largestDegree < list.length + 1){
                 
-                for(int i = temp; i < largestDegree; i++){
+                for(int i = 0; i < largestDegree; i++){
                     list[i] = list[i] - 1;
-                    //list.set(i, list.get(i) - 1);
                 }
-                //Collections.reverse(list);
+                
                 Arrays.sort(list, Collections.reverseOrder());
                 if(checkZero(list)){
                     System.out.println("Simple graph is possible");
@@ -56,12 +53,15 @@ public class HakimiTheorem {
                 
                 if(checkNegative(list)){
                     System.out.println("No simple graph is possible");
-                    System.out.println("dhukse2");
                     break;
                 }
+                
+                if(list.length == 0){
+                    break;
+                }
+                
             }else{
                 System.out.println("No simple graph is possible");
-                System.out.println("dhukse1");
                 break;
             }
         }
