@@ -41,12 +41,6 @@ public class ZeroOneKnapsack {
     public static int[][] knapSack(int numberOfItems, int capacity){
         
         int[][] knapSackTable = new int[numberOfItems + 1][capacity + 1];
-//        for(int i = 0; i < capacity + 1; i++){
-//            knapSackTable[0][i] = 0;
-//        }
-//        for(int i = 0; i < numberOfItems + 1; i++){
-//            knapSackTable[i][0] = 0;
-//        }
         
         for(int i = 1; i <= numberOfItems; i++){
             for(int j = 1; j <= capacity; j++){
