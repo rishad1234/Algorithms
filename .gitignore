@@ -144,3 +144,6 @@ hs_err_pid*
 /FCFS/nbproject/private/
 /FCFS/build/
 /FCFS/dist/
+/RoundRobin/nbproject/private/
+/RoundRobin/build/
+/RoundRobin/dist/
