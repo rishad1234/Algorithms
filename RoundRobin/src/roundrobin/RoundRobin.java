@@ -48,14 +48,18 @@ public class RoundRobin {
 //        }
 
         Queue<Integer> readyQueue = new LinkedList<>();
-        ArrayList<Process> running = new ArrayList<>();
         
         readyQueue.add(0);
         
         int totalTime = 0;
+        System.out.print("0");
         while(!readyQueue.isEmpty()){
 
             int runningProcessIndex = readyQueue.remove();
+            
+            if(tempProcesses.get(runningProcessIndex).burstTime == 0){
+                continue;
+            }
             
             if(tempProcesses.get(runningProcessIndex).burstTime <= timeQuantum){
                 totalTime += tempProcesses.get(runningProcessIndex).burstTime;
@@ -66,12 +70,11 @@ public class RoundRobin {
                 tempProcesses.get(runningProcessIndex).burstTime -= timeQuantum;
                 tempProcesses.get(runningProcessIndex).isRunning = true;
             }
+           
             
-            //running.add(tempProcesses.get(runningProcessIndex));
-            
-            
-            System.out.println(tempProcesses.get(runningProcessIndex).processName + " " + tempProcesses.get(runningProcessIndex).arrivalTime + " " 
-                    + tempProcesses.get(runningProcessIndex).burstTime + " " + totalTime);
+            System.out.print("------ " + tempProcesses.get(runningProcessIndex).processName + " ------" + totalTime + " | ");
+//            System.out.println(tempProcesses.get(runningProcessIndex).processName + " " + tempProcesses.get(runningProcessIndex).arrivalTime + " " 
+//                    + tempProcesses.get(runningProcessIndex).burstTime + " " + totalTime);
            
             
             for(int i = 0; i < numberOfprocesses; i++){
@@ -83,12 +86,8 @@ public class RoundRobin {
             if(tempProcesses.get(runningProcessIndex).burstTime > 0){
                 readyQueue.add(tempProcesses.indexOf(tempProcesses.get(runningProcessIndex)));
             }
-        }
-        
-//        for(Process r : running){
-//            System.out.println(r.processName + " " + r.arrivalTime + " " + r.burstTime);
-//        }
-//        
+        }    
+        System.out.println("");
         
     }
     
