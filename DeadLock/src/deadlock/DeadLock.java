@@ -16,6 +16,7 @@ public class DeadLock {
     static int[] color = new int[1000];
     static int cycleCount = 0;
     static Stack<Integer> stack = new Stack<>();
+    static ArrayList<Integer> cycle = new ArrayList<>();
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
@@ -52,7 +53,9 @@ public class DeadLock {
                 cycleCount++;
                 
                 for(int j = L.size() - 1; j >= 0; j--){
+                    
                     stack.push(L.get(j));
+                    cycle.add(L.get(j));
                     
                     if(L.get(j) == temp){
                         break;
@@ -63,9 +66,15 @@ public class DeadLock {
                     System.out.print(stack.pop() + " ");
                 }
                 System.out.println("");
+                while(!cycle.isEmpty()){
+                    
+                    System.out.print(cycle.get(cycle.size() - 1) + " ");
+                    cycle.remove(cycle.size() - 1);
+                }
+                System.out.println("");
             }
         }
-        L.remove(L.size() - 1);
+//        L.remove(L.size() - 1);
         color[node] = 2;
     }
     
