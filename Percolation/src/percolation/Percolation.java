@@ -13,7 +13,7 @@ public class Percolation {
     private final int bottom;
     private final WeightedQuickUnionUF unionFind;
     private byte[] site;
-    private static int numberOfOpen;
+    private int numberOfOpen;
 
     public Percolation(int N) {
         n = N;
@@ -21,6 +21,7 @@ public class Percolation {
         top = n * n;
         bottom = n * n + 1;
         site = new byte[n * n];
+        numberOfOpen = 0;
     }
     
     private void increase(){
