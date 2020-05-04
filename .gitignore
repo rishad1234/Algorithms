@@ -156,3 +156,6 @@ hs_err_pid*
 /DeadLock/nbproject/private/
 /DeadLock/dist/
 /DeadLock/build/
+/Percolation/nbproject/private/
+/Percolation/build/
+/Percolation/dist/
