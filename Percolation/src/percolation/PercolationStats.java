@@ -14,8 +14,8 @@ import edu.princeton.cs.algs4.StdStats;
  */
 public class PercolationStats {
 
-    private double[] treshold;
-    private int t;
+    private final double[] treshold;
+    private final int t;
 
     public PercolationStats(int N, int T) {
         if (N < 1 || T < 1) {
@@ -27,6 +27,14 @@ public class PercolationStats {
         for (int i = 0; i < treshold.length; i++) {
             treshold[i] = calcTreshold(N);
         }
+    }
+    
+    public static void main(String[] args) {
+        PercolationStats stats = new PercolationStats(200, 100);
+        System.out.println("mean                    = " + stats.mean());
+        System.out.println("stddev                  = " + stats.stddev());
+        System.out.println("95% confidence interval = [" + stats.confidenceLo()
+                + ", " + stats.confidenceHi() + "]");
     }
 
     private double calcTreshold(int n) {

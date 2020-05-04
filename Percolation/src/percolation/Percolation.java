@@ -1,7 +1,5 @@
 package percolation;
 
-import edu.princeton.cs.algs4.StdRandom;
-import edu.princeton.cs.algs4.StdStats;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 /**
@@ -10,19 +8,12 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
  */
 public class Percolation {
 
-    private int n;
-    private int top;
-    private int bottom;
-    private WeightedQuickUnionUF unionFind;
+    private final int n;
+    private final int top;
+    private final int bottom;
+    private final WeightedQuickUnionUF unionFind;
     private byte[] site;
-
-    public static void main(String[] args) {
-        PercolationStats stats = new PercolationStats(200, 100);
-        System.out.println("mean                    = " + stats.mean());
-        System.out.println("stddev                  = " + stats.stddev());
-        System.out.println("95% confidence interval = [" + stats.confidenceLo()
-                + ", " + stats.confidenceHi() + "]");
-    }
+    private static int numberOfOpen;
 
     public Percolation(int N) {
         n = N;
@@ -31,16 +22,22 @@ public class Percolation {
         bottom = n * n + 1;
         site = new byte[n * n];
     }
+    
+    private void increase(){
+        numberOfOpen++;
+    }
 
     public void open(int i, int j) {
-        checkError(i, j);
+        if (i < 1 || i > n || j < 1 || j > n) {
+            throw new IndexOutOfBoundsException();
+        }
         if (isOpen(i, j)) {
             return;
         }
         int currentSite = convert2dTo1dCoord(i, j);
         this.site[currentSite] = 1;
-
-        if (i == 1 && !unionFind.connected(currentSite, j)) {
+        increase();
+        if (i == 1 && !connected(currentSite, j)) {
             unionFind.union(currentSite, top);
         }
 
@@ -70,15 +67,10 @@ public class Percolation {
         }
     }
 
-    public boolean checkError(int i, int j) {
+    public boolean isOpen(int i, int j) {
         if (i < 1 || i > n || j < 1 || j > n) {
             throw new IndexOutOfBoundsException();
         }
-        return true;
-    }
-
-    public boolean isOpen(int i, int j) {
-        checkError(i, j);
         if (site[convert2dTo1dCoord(i, j)] == 1) {
             return true;
         }
@@ -91,22 +83,37 @@ public class Percolation {
     }
 
     public boolean isFull(int i, int j) {
-        checkError(i, j);
+        if (i < 1 || i > n || j < 1 || j > n) {
+            throw new IndexOutOfBoundsException();
+        }
         if (!isOpen(i, j)) {
             return false;
         }
         int currentSite = convert2dTo1dCoord(i, j);
-        if (unionFind.connected(top, currentSite)) {
+        if (connected(top, currentSite)) {
             return true;
         }
         return false;
     }
 
     public boolean percolates() {
-        if (unionFind.connected(top, bottom)) {
+        if (connected(top, bottom)) {
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean connected(int i, int j){
+        int root = unionFind.find(i);
+        int root1 = unionFind.find(j);
+        
+        if(root == root1){
             return true;
         }
         return false;
     }
 
+    public int numberOfOpenSites(){
+        return numberOfOpen;
+    }
 }
