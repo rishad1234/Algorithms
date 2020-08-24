@@ -163,3 +163,6 @@ hs_err_pid*
 /Permutation/nbproject/private/
 /Permutation/dist/
 /Permutation/build/
+/ProducerConsumer/nbproject/private/
+/ProducerConsumer/build/
+/ProducerConsumer/dist/
