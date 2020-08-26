@@ -39,7 +39,7 @@ public class FifoAlgorithm {
             }
         }
         
-        System.out.println("Number of page faults: " + pageFaults);
+        System.out.println("Number of page faults in Fifo Replacement Algorithm: " + pageFaults);
         
         System.out.println("Page Fault rate: " + calculate());
     }
