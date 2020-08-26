@@ -45,6 +45,6 @@ public class FifoAlgorithm {
     }
     
     private double calculate(){
-        return Math.ceil(((double)pageFaults / (double) pageRef) * 100);
+        return ((double)pageFaults / (double) pageRef) * 100;
     }
 }
