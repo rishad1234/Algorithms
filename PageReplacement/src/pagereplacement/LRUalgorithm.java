@@ -1,9 +1,6 @@
 
 package pagereplacement;
 
-import java.util.LinkedList;
-
-
 public class LRUalgorithm {
     int numberOfpages;
     int pageRef;
@@ -26,8 +23,8 @@ public class LRUalgorithm {
     
     public void LRU(){
         
-        int minPosition = 0;
-        int range;
+        int positionBuffer = 0;
+        int positionReference;
         int position = -1;
         for(int i = 0; i < pageRef; i++){
             if(i < pageFrames && checkReferences[references[i]] == 0){
@@ -36,7 +33,7 @@ public class LRUalgorithm {
                 checkReferences[references[i]] = 1;
             }else if(checkReferences[references[i]] == 0){
                 pageFaults++;
-                range = pageRef;
+                positionReference = pageRef;
                 for(int j = 0; j < pageFrames; j++){
                     for(int k = i - 1; k >= 0; k--){
                         if(buffer[j] == references[k]){
@@ -44,13 +41,13 @@ public class LRUalgorithm {
                             break;
                         }
                     }
-                    if(range > position){
-                        range = position;
-                        minPosition = j;
+                    if(positionReference > position){
+                        positionReference = position;
+                        positionBuffer = j;
                     }
                 }
-                checkReferences[buffer[minPosition]] = 0;
-                buffer[minPosition] = references[i];
+                checkReferences[buffer[positionBuffer]] = 0;
+                buffer[positionBuffer] = references[i];
                 checkReferences[references[i]] = 1;
             }
         }
