@@ -30,16 +30,26 @@ public class PageReplacement {
 
         System.out.println("Input references: ");
         for(int i = 0; i < pageRef; i++){
-            references[i] = input.nextInt();
+            int ref = input.nextInt();
+            if(ref >= numberOfPages){
+                System.err.println("Out of page Frames");
+                System.exit(ref);
+            }
+            references[i] = ref;
         }
-        
-//        System.out.println("testing: ");
-//        for(int i = 0; i < pageRef; i++){
-//            System.out.println(references[i]);
-//        }
 
         FifoAlgorithm fifo = new FifoAlgorithm(numberOfPages, pageRef, pageFrames, references);
         fifo.fifo();
+        
+        System.out.println("");
+        System.out.println("");
+        
+        LRUalgorithm lru = new LRUalgorithm(numberOfPages, pageRef, pageFrames, references);
+        lru.LRU();
     }
     
 }
+//8
+//22
+//3
+//7 0 1 2 0 3 0 4 2 3 0 3 0 3 2 1 2 0 1 7 0 1
