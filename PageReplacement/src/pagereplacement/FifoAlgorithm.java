@@ -10,7 +10,7 @@ public class FifoAlgorithm {
     int pageRef;
     int pageFrames;
     int[] references;
-    boolean[] checkReferences;
+    int[] checkReferences;
     
     int pageFaults;
     
@@ -22,20 +22,20 @@ public class FifoAlgorithm {
         this.pageFrames = pageFrames;
         this.references = references;
         this.frames = new LinkedList<>();
-        this.checkReferences = new boolean[numberOfpages];
+        this.checkReferences = new int[numberOfpages];
     }
     
     public void fifo(){
         
         for(int i = 0; i < references.length; i++){
-            if(checkReferences[references[i]] == false){
+            if(checkReferences[references[i]] == 0){
                 frames.add(references[i]);
                 pageFaults++;
-                checkReferences[references[i]] = true;
+                checkReferences[references[i]] = 1;
             }
             
             if(frames.size() > pageFrames){
-                checkReferences[frames.poll()] = false;
+                checkReferences[frames.poll()] = 0;
             }
         }
         
