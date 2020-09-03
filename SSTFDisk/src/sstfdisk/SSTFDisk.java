@@ -50,8 +50,12 @@ public class SSTFDisk {
             System.out.print(head + " ");
         }
         System.out.println("");
-        System.out.println(movement);
+        System.out.println("total head movement: " + movement);
 
     }
     
 }
+//200
+//8
+//98 183 37 122 14 124 65 67
+//53
