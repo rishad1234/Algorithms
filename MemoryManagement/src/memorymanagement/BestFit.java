@@ -19,18 +19,19 @@ public class BestFit {
     }
     
     public void BestFitAlgorithm(){
-        Arrays.sort(holes);
         for(int i = 0; i < requestSize; i++){
-            int difference = Integer.MAX_VALUE;
             int index = -1;
-            for(int j = holeSize - 1; j >= 0; j--){
-                if(holes[j] >= request[i] && difference > (holes[j] - request[i])){
-                    difference = holes[j] - request[i];
-                    index = j;
-                    served[i] = 1;
+            for(int j = 0; j < holeSize - 1; j++){
+                if(holes[j] >= request[i]){
+                    if(index == -1){
+                        index = j;
+                    }else if(holes[index] > holes[j]){
+                        index = j;
+                        served[i] = 1;
+                    }
                 }
             }
-            if(served[i] == 0){
+            if(index == -1){
                 System.out.println("No holes found for " + request[i]);
                 break;
             }
