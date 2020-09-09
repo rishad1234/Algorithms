@@ -178,3 +178,6 @@ hs_err_pid*
 /SSTFDisk/nbproject/private/
 /SSTFDisk/dist/
 /SSTFDisk/build/
+/MemoryManagement/nbproject/private/
+/MemoryManagement/build/
+/MemoryManagement/dist/
