@@ -22,21 +22,9 @@ public class MemoryManagement {
             request[i] = input.nextInt();
         }
         
-//        System.out.println("First Fit Algorithm: ");
-//        FirstFit first = new FirstFit(holeSize, holes, requestSize, request);
-//        first.FirstFitAlgorithm();
-//        System.out.println("");
-//        System.out.println("");
-        
-//        System.out.println("Worst Fit Algorithm : ");
-//        WorstFit worst = new WorstFit(holeSize, holes, requestSize, request);
-//        worst.WorstFitAlgorithm();
-//        System.out.println("");
-//        System.out.println("");
-
-        System.out.println("Best Fit Algorithm: ");
-        BestFit best = new BestFit(holeSize, holes, requestSize, request);
-        best.BestFitAlgorithm();
+        System.out.println("Worst Fit Algorithm : ");
+        WorstFit worst = new WorstFit(holeSize, holes, requestSize, request);
+        worst.WorstFitAlgorithm();
         System.out.println("");
         System.out.println("");
     }

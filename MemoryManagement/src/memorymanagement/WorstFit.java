@@ -37,6 +37,10 @@ public class WorstFit {
         for(int i = 0; i < holeSize; i++){
             fragment += holes[i];
         }
-        System.out.println("External Fragmentation: " + fragment);
+        if(fragment == 0){
+            System.out.println("No External fragmentation");        
+        }else{
+            System.out.println("External Fragmentation: " + fragment);
+        }
     }
 }

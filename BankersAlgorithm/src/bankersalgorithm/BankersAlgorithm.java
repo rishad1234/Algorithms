@@ -22,26 +22,26 @@ public class BankersAlgorithm {
         int deadlock = 0;
         
         
-        System.out.println("Enter max resourcecs: ");
+        //System.out.println("Enter max resourcecs: ");
         for(int i = 0; i < numberOfResource; i++){
             maxResource[i] = input.nextInt();
         }
         
-        System.out.println("Enter allocation list: ");
+        //System.out.println("Enter allocation list: ");
         for(int i = 0; i < numberOfProcess; i++){
             for(int j = 0; j < numberOfResource; j++){
                 allocation[i][j] = input.nextInt();
             }
         }
         
-        System.out.println("Enter Max Allocation list: ");
+        //System.out.println("Enter Max Allocation list: ");
         for(int i = 0; i < numberOfProcess; i++){
             for(int j = 0; j < numberOfResource; j++){
                 maxAllocation[i][j] = input.nextInt();
             }
         }
         
-        //need calculation
+        // remaining need calculation
         for(int i = 0; i < numberOfProcess; i++){
             for(int j = 0; j < numberOfResource; j++){
                 need[i][j] = maxAllocation[i][j] - allocation[i][j];
@@ -97,13 +97,8 @@ public class BankersAlgorithm {
                 }
             }
         }
-        
-        
         System.out.println(path);
-        
-        
     }
-    
 }
 
 //5 3
