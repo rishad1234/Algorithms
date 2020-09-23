@@ -181,3 +181,12 @@ hs_err_pid*
 /MemoryManagement/nbproject/private/
 /MemoryManagement/build/
 /MemoryManagement/dist/
+/FileManagement/nbproject/private/
+/FileManagement/build/
+/FileManagement/dist/
+/ContiguousFileManagement/nbproject/private/
+/ContiguousFileManagement/dist/
+/ContiguousFileManagement/build/
+/NonContiguousFileManagement/nbproject/private/
+/NonContiguousFileManagement/dist/
+/NonContiguousFileManagement/build/
